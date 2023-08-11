@@ -1,10 +1,11 @@
 const readlineSync = require('readline-sync');                              
 let bebida = "";
+let valor = 0.00;
 
-bebida = pegarValor();
-console.log(bebida)
+displayCardapio();
+informarValorDeBebida();
 
-function pegarValor(){                                                      // função handler para chamada do... 
+function inputBebida(){                                                      // função handler para chamada do... 
     let str_bebida = "";                                                    // tipo de input correto
                                                                             // - - - - - - - - - - - - - - - - - - - - - 
     switch(true){                                                           // esse switch case é um pouco...
@@ -15,18 +16,18 @@ function pegarValor(){                                                      // f
             str_bebida = pegarValorPorBrowserPrompt();                      // - - - - - - - - - - - - - - - - - - - - - 
             break;
         default:
-            console.log("De algum modo bizarro esta "+
-            "execução não está no Node "+
-            "e nem no Browser...")
+            console.log("de algum modo bizarro esta "+
+            "execucao nao esta no node "+
+            "e nem no browser...")
             str_bebida = atribuirValorDefaultSeBebibaEstiverUndefined();
-            console.log("Sendo assim, o programa está"+
+            console.log("sendo assim, o programa esta"+
             " hard coded para selecionar 'cha'");
         }
 
     return str_bebida;
 }
 
-function pegarValorPorBrowserPrompt(){                                      // pegar input em um browser qualquer..
+function pegarValorPorBrowserPrompt(){                                      // pegar input em um browser qualquer...
     let str_bebida = window.prompt("Qual bebida voce quer?");               // usando window.prompt
     return bebida;                                                          // - - - - - - - - - - - - - - - - - - - - - 
 }
@@ -37,7 +38,7 @@ function pegarValorPorReadline(){                                           // p
 }
 
 function atribuirValorDefaultSeBebibaEstiverUndefined(){                    // nome de função desnecessariamente grande...
-return "Cha";                                                               // tão desnecessaria quanto ela mesma 
+return "cha";                                                               // tão desnecessaria quanto ela mesma 
 }                                                                           // - - - - - - - - - - - - - - - - - - - - - 
 
 function isEnvironmentBrowser(){                                            // checa se o ambiente onde esse código...
@@ -50,3 +51,49 @@ function isEnvironmentNode(){                                               // s
             && typeof process !== 'undefined'                               // mas checa se o ambiente é o Node...
             && typeof require !== 'undefined')                              // e retorna uma booleana
 }                                                                           // - - - - - - - - - - - - - - - - - - - - -    
+
+function determinarValor(str_bebida){                                       // sem nenhum truque, só o switch mesmo, que...
+                                                                            // era a real demanda dessa atividade kkkkkk
+    let valor = 0.00;                                                       // - - - - - - - - - - - - - - - - - - - - -
+
+    switch (str_bebida){
+        case 'cha':
+            valor = 2.50
+            break;
+        case 'cafe':
+            valor = 3.50
+            break;
+        case 'leite':
+            valor = 4.50
+            break;
+        case '':
+            console.log("nao deu pra ouvir o que voce disse"+"\n");              // o default faz uma chamada recursiva para usar...
+            bebida = atribuirValorDefaultSeBebibaEstiverUndefined()         // o valor de escape no caso de falha de input do...
+            console.log("em vez disso, serviremos "+bebida+"\n");                // usuário
+            valor = determinarValor(bebida);                                // - - - - - - - - - - - - - - - - - - - - -
+            break;
+        default:
+            console.log("aqui nao comercializamos '"+bebida+"'\n");         // o default faz uma chamada recursiva para usar...
+            bebida = atribuirValorDefaultSeBebibaEstiverUndefined()         // o valor de escape no caso de falha de input do...
+            console.log("em vez disso, serviremos "+bebida+"\n");           // usuário
+            valor = determinarValor(bebida);                                // - - - - - - - - - - - - - - - - - - - - -
+            break;
+    }
+
+    return valor;
+}
+
+function informarValorDeBebida(){                                           // encapsulamento das funções acima
+    bebida = inputBebida();
+    valor = determinarValor(bebida);
+    console.log("O valor da bebida "+bebida+" é R$"+valor.toFixed(2));
+}                                                                           // - - - - - - - - - - - - - - - - - - - - -
+
+function displayCardapio(){
+    console.log("opcoes");
+    console.log("cha: R$ 2.50");
+    console.log("cafe: R$ 3.50");
+    console.log("leite: R$ 4.50");
+    console.log("e por favor, apenas caracteres ASCII"+
+                " no terminal taokei\n");
+}
