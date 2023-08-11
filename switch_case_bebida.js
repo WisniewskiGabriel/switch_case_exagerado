@@ -2,6 +2,7 @@ const readlineSync = require('readline-sync');
 let bebida = "";
 
 bebida = pegarValor();
+console.log(bebida)
 
 function pegarValor(){                                                      // função handler para chamada do... 
     let str_bebida = "";                                                    // tipo de input correto
@@ -17,6 +18,9 @@ function pegarValor(){                                                      // f
             console.log("De algum modo bizarro esta "+
             "execução não está no Node "+
             "e nem no Browser...")
+            str_bebida = atribuirValorDefaultSeBebibaEstiverUndefined();
+            console.log("Sendo assim, o programa está"+
+            " hard coded para selecionar 'cha'");
         }
 
     return str_bebida;
@@ -33,7 +37,7 @@ function pegarValorPorReadline(){                                           // p
 }
 
 function atribuirValorDefaultSeBebibaEstiverUndefined(){                    // nome de função desnecessariamente grande...
-return "Chá";                                                               // tão desnecessaria quanto ela mesma 
+return "Cha";                                                               // tão desnecessaria quanto ela mesma 
 }                                                                           // - - - - - - - - - - - - - - - - - - - - - 
 
 function isEnvironmentBrowser(){                                            // checa se o ambiente onde esse código...
