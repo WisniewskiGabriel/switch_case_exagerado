@@ -1,0 +1,14 @@
+{
+  "name": "switch_case_exagerado",
+  "version": "1.0.0",
+  "description": "Exercício para faculdade",
+  "main": "switch_case_bebida.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "gw",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}

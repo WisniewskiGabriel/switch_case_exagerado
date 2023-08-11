@@ -1,14 +1,27 @@
+const readlineSync = require('readline-sync');                  //executando em Node.js
 let bebida = "";
-const str_frase_bebida = "Qual bebida você quer?";
+
+bebida = pegarValor();
+console.log(bebida);
+
+function pegarValor(){
+    let str_bebida = "";
+    switch(true){
+        case isEnvironmentNode():
+            str_bebida = pegarValorPorReadline();
+            break;
+    }
+    return str_bebida;
+}
 
 function pegarValorPorBrowserPrompt(){                              //pegar input em um browser qualquer..
-    let str_bebida = window.prompt(str_frase_bebida);               //usando window.prompt
+    let str_bebida = window.prompt("Qual bebida voce quer?");               //usando window.prompt
     return bebida;
 }
 
 function pegarValorPorReadline(){                                   //pegar input por readline-sync... 
-    const readlineSync = require('readline-sync');                  //executando em Node.js
-    let str_bebida = readlineSync.question(str_frase_bebida);
+    let str_bebida = readlineSync.question('Qual bebida voce quer?');
+    return str_bebida;
 }
 
 function atribuirValorDefaultSeBebibaEstiverUndefined(){            //nome de função desnecessariamente grande...
