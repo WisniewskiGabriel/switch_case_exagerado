@@ -5,7 +5,7 @@ A ideia nesse código foi construir 2 blocos de lógica principais que fazem uso
 ## Descrição da Atividade
 
 Um dos switches é do formato clássico, validando a assinatura de string em seus cases. Mas também há um switch case que usa uma assinatura de booleana e os cases são as booleanas retornadas por funções.
-Também é interessante notar o uso de uma função recursiva para tratativa de um imput vazio.
+Também é interessante notar o uso de uma função recursiva ('determinarValor') para tratativa de um imput vazio.
 
 ## Como Usar o Código
 
