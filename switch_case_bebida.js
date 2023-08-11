@@ -67,9 +67,9 @@ function determinarValor(str_bebida){                                       // s
             valor = 4.50
             break;
         case '':
-            console.log("nao deu pra ouvir o que voce disse"+"\n");              // o default faz uma chamada recursiva para usar...
+            console.log("nao deu pra ouvir o que voce disse"+"\n");         // o default faz uma chamada recursiva para usar...
             bebida = atribuirValorDefaultSeBebibaEstiverUndefined()         // o valor de escape no caso de falha de input do...
-            console.log("em vez disso, serviremos "+bebida+"\n");                // usuário
+            console.log("em vez disso, serviremos "+bebida+"\n");           // usuário
             valor = determinarValor(bebida);                                // - - - - - - - - - - - - - - - - - - - - -
             break;
         default:
