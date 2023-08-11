@@ -10,3 +10,7 @@ function pegarValorPorReadline(){                                   //pegar inpu
     const readlineSync = require('readline-sync');                  //executando em Node.js
     let str_bebida = readlineSync.question(str_frase_bebida);
 }
+
+function atribuirValorDefaultSeBebibaEstiverUndefined(){            //nome de função desnecessariamente grande...
+    return "Chá";                                                   //tão desnecessaria quanto ela mesma 
+}
